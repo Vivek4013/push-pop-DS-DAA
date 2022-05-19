@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<conio.h>
+#define SIZE 4
+void push(int stack[],int *top,int item)
+{
+	if(*top==SIZE-1)
+	{
+		printf("overflow\n");
+	}
+	else
+	{
+		*top=*top+1;
+		stack[*top]=item;
+	}
+}
+int pop(int stack[],int *top)
+{
+	if(*top==-1)
+	{
+		printf("underflow\n");
+	}
+	else
+	{
+		int item=stack[*top];
+		*top=*top-1;
+		return(item);
+	}
+}
+
+int peek(int stack[],int top)
+{
+	if(top==-1)
+	{
+		printf("underflow\n");
+	}
+	else
+	{
+		return(stack[top]);
+	}
+}
+
+void main()
+{
+	int top=-1,item;
+	int stack[SIZE];
+	int choice;
+	clrscr();
+
+	while(1)
+	{
+	printf("enter your choice\n");
+	scanf("%d",&choice);
+
+		switch(choice)
+		{
+			case 1:
+				printf("enter your eelment which you want to insert");
+				scanf("%d",&item);
+				push(stack,&top,item);
+				break;
+			case 2:
+				item=pop(stack,&top);
+				printf("%d",item);
+				break;
+			case 3:
+				item=peek(stack,top);
+				printf("%d",item);
+				break;
+			default:
+				exit(0);
+		}
+	}
+}
